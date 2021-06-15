@@ -34,8 +34,9 @@ def update(request, id):
         'form': form
     }
     return render(request,'update.html',context)
-def update(request):
-    return render(request,'update.html')
 
-def delete(request):
-    return render(request,'delete.html')
+def delete(request, id):
+    emp = Employee.objects.get(id=id)
+    emp.delete()
+    return redirect('index')
+    #return render(request,'delete.html')
