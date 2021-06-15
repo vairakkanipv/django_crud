@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from crud_operations.forms import EmployeeForm
+from crud_operations.models import Employee
 
 # Create your views here.
 def index(request):
