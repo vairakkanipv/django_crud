@@ -1,11 +1,16 @@
 from django.shortcuts import render
+from crud_operations.forms import EmployeeForm
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
 
 def create(request):
-    return render(request,'create.html')
+    form = EmployeeForm()
+    context = {
+        'form': form
+    }
+    return render(request,'create.html',context)
 
 def update(request):
     return render(request,'update.html')
