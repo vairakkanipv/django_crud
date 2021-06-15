@@ -20,6 +20,20 @@ def create(request):
     }
     return render(request,'create.html',context)
 
+def update(request, id):
+    emp = Employee.objects.get(id=id)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST, instance=emp)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        return redirect('update')
+    else:
+        form = EmployeeForm
+    context = {
+        'form': form
+    }
+    return render(request,'update.html',context)
 def update(request):
     return render(request,'update.html')
 
