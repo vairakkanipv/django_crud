@@ -3,7 +3,8 @@ from crud_operations.forms import EmployeeForm
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    all_emp = Employee.objects.all()
+    return render(request,'index.html',{'data':all_emp})
 
 def create(request):
     if request.method == 'POST':
@@ -13,7 +14,6 @@ def create(request):
             return redirect('index')
     else:
         form = EmployeeForm()
-    form = EmployeeForm()
     context = {
         'form': form
     }
